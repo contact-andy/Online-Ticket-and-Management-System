@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Seat extends Model
 {
     use HasFactory;
+    protected  $fillable = [
+       'theatre_id','seat_type','seat_name','is_available'
+    ];
+    
     public function seatbookings(){
         return $this->hasMany(Seatbooking::class);
     }
