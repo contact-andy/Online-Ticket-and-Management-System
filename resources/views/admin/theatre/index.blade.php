@@ -1,37 +1,42 @@
 <x-admin>
     @section('title')
-        {{ 'Permission' }}
+        {{ 'Theatre' }}
     @endsection
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Permission</h3>
+            <h3 class="card-title">Theatre Table</h3>
             <div class="card-tools">
-                <a href="{{ route('admin.permission.create') }}" class="btn btn-sm btn-primary">Add</a>
+                <a href="{{ route('admin.theatre.create') }}" class="btn btn-sm btn-primary">Add</a>
             </div>
         </div>
         <div class="card-body">
-            <table class="table table-striped" id="collectionTable">
+            <table class="table table-striped" id="theatreTable">
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Created</th>
-                        <th>Action</th>
+                        <th>Location</th>
+                        <th>Number of rows</th>
+                        <th>Number of columns</th>
+                        <th>Capacity</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($data as $permission)
+                    @foreach ($data as $theatre)
                         <tr>
-                            <td>{{ $permission->name }}</td>
-                            <td>{{ $permission->created_at }}</td>
+                            <td>{{ $theatre->name }}</td>
+                            <td>{{ $theatre->location}}</td>
+                            <td>{{ $theatre->number_of_rows }}</td>
+                            <td>{{ $theatre->number_of_columns }}</td>
+                            <td>{{ $theatre->number_of_columns * $theatre->number_of_rows}}</td>
                             <td>
-                                <a href="{{ route('admin.permission.edit', encrypt($permission->id)) }}"
+                                <a href="{{ route('admin.theatre.edit', encrypt($theatre->id)) }}"
                                     class="btn btn-sm btn-secondary">
                                     <i class="far fa-edit"></i>
                                 </a>
                             </td>
                             <td>
-                                <form action="{{ route('admin.permission.destroy', encrypt($permission->id)) }}"
+                                <form action="{{ route('admin.theatre.destroy', encrypt($theatre->id)) }}"
                                     method="POST" onclick="confirm('Are you sure')">
                                     @method('DELETE')
                                     @csrf
@@ -41,11 +46,7 @@
                                 </form>
                             </td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="4" class="text-center bg-danger">Permission not created</td>
-                        </tr>
-                    @endforelse
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -54,7 +55,7 @@
     @section('js')
         <script>
             $(function() {
-                $('#collectionTable').DataTable({
+                $('#theatreTable').DataTable({
                     "paging": true,
                     "searching": true,
                     "ordering": true,

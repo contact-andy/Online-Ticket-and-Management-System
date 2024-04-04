@@ -16,7 +16,7 @@ class UserController extends Controller
     }
     public function index()
     {
-        $data = User::orderBy('id','DESC')->get();
+        $data = User::where('is_deleted', User::STATUS_ACTIVE)->get();
         return view('admin.user.index', compact('data'));
     }
     public function create()
@@ -61,7 +61,9 @@ class UserController extends Controller
     }
     public function destroy($id)
     {
-        User::where('id',decrypt($id))->delete();
+        User::where('id',decrypt($id))->update(
+            ['is_deleted'=> User::STATUS_INACTIVE]
+        );
         return redirect()->back()->with('success','User deleted successfully.');
     }
 }

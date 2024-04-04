@@ -16,9 +16,9 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('theatre_id');
             $table->string('seat_type');
-            $table->boolean('available');
-
-        });
+            $table->boolean('is_available')->default(1);
+            $table->string('seat_name');
+            });
     }
 
     /**

@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('seatbooking_id');
             $table->string('customer_name');
             $table->string('email');
-            $table->timestamp('reservation_time');
+            $table->string('showtime_id')->constrained()->onDelete('cascade');
         });
     }
+
+    
 
     /**
      * Reverse the migrations.

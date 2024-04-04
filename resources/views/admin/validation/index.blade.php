@@ -1,33 +1,31 @@
 <x-admin>
-    @section('title'){{ 'Create Permission' }} @endsection
+    @section('title'){{ 'Validate Ticket' }} @endsection
     <section class="content">
         <!-- Default box -->
         <div class="d-flex justify-content-center">
             <div class="col-lg-6">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Create New Permission</h3>
+                        <h3 class="card-title">Validation</h3>
                         <div class="card-tools">
-                            <a href="{{ route('admin.permission.index') }}"
-                                class="btn btn-sm btn-dark">Back</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ route('admin.permission.store') }}" method="POST"
+                    <form action="{{ route('admin.role.store') }}" method="POST"
                         class="needs-validation" novalidate="">
                         @csrf
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label for="name" class="form-label">Permission Name</label>
+                                        <label for="name" class="form-label">Enter Transaction ID</label>
                                         <input type="text" class="form-control" name="name" id="name"
                                             required="" value="{{ old('name') }}">
                                             @error('name')
                                                 <span>{{ $message }}</span>
                                             @enderror
-                                        <div class="invalid-feedback">Permission name field is required.</div>
+                                        <div class="invalid-feedback">Role name field is required.</div>
                                     </div>
                                 </div>
                             </div>
@@ -42,6 +40,18 @@
             </div>
         </div>
         <!-- /.card -->
+
+        <div class="container mt-5 col-lg-6 card">
+            <div class="ticket-validation-container">
+              <!-- Customer Info Section -->
+              <div class="info-section" id="customerInfo">
+                <h4 class="text-center">Customer Information</h4>
+                <p><strong>Name:</strong> <span id="customerName"></span></p>
+                <p><strong>Number of Seats Reserved:</strong> <span id="seatsReserved"></span></p>
+                <p><strong>Seat Names:</strong> <span id="seatNames"></span></p>
+              </div>
+            </div>
+          </div>
 
     </section>
 </x-admin>
