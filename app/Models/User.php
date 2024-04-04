@@ -25,6 +25,8 @@ class User extends Authenticatable
         'provider_id',
         'avatar'
     ];
+    const STATUS_INACTIVE = 1;
+    const STATUS_ACTIVE = 0;
 
     /**
      * The attributes that should be hidden for serialization.

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Reservation extends Model
 {
     use HasFactory;
-    public function seatbooking(){
+    public function seatbookings(){
         return $this->hasMany(Seatbooking::class);
     }
     public function showtime(){

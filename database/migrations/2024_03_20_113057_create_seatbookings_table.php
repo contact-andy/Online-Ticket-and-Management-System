@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('seatbookings', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('reservation_id');
-            $table->foreignIdF('seat_id');
+            $table->foreignId('reservation_id')->constrained();
+            $table->foreignId('seat_id')->constrained();
         });
     }
 

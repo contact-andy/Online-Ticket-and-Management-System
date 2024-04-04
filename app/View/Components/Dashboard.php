@@ -2,9 +2,9 @@
 
 namespace App\View\Components;
 
-use App\Models\Category;
 use App\Models\Collection;
-use App\Models\Product;
+use App\Models\theatre;
+use App\Models\Show;
 use App\Models\User;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -20,11 +20,11 @@ class Dashboard extends Component
         $user = User::count();
         view()->share('user',$user);
         
-        $category = Category::count();
-        view()->share('category',$category);
+        $show = Show::where('is_disabled',Show::STATUS_ACTIVE)->count();
+        view()->share('show',$show);
         
-        $product = Product::count();
-        view()->share('product',$product);
+        $theatre = Theatre::count();
+        view()->share('theatre',$theatre);
         
         $collection = Collection::count();
         view()->share('collection',$collection);

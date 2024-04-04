@@ -7,7 +7,7 @@ class ImageService
     public function compressAndStoreImage($image, $uniqueSlug, $type)
     {
         $compressedImage = imagecreatefromstring(file_get_contents($image->getRealPath()));
-        $extension = 'webp'; // or any other desired extension
+        $extension = $image->getClientOriginalExtension();
         $filename = $uniqueSlug . '.' . $extension;
 
         // Determine save path based on the type
@@ -15,8 +15,8 @@ class ImageService
             case 'product':
                 $savePath = public_path('product-image/' . $filename);
                 break;
-            case 'collection':
-                $savePath = public_path('collection-image/' . $filename);
+            case 'show':
+                $savePath = public_path('images/' . $filename);
                 break;
             case 'slider':
                 $savePath = public_path('product-slider-images/' . $filename);

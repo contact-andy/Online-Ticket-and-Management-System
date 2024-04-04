@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('showtimes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('theatre_id');
-            $table->foreignId('show_id');
+            $table->foreignId('theatre_id')->constrained()->onDelete('cascade');
+            $table->foreignId('show_id')->constrained()->onDelete('cascade');;
             $table->time('time');
             $table->date('date');
+            $table->boolean('is_disabled')->default(0);
 
         });
     }

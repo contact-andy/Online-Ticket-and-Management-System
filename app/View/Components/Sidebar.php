@@ -2,10 +2,12 @@
 
 namespace App\View\Components;
 
-use App\Models\Category;
 use App\Models\Collection;
 use App\Models\Product;
+use App\Models\Show;
+use App\Models\Showtime;
 use App\Models\SubCategory;
+use App\Models\Theatre;
 use App\Models\User;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -26,20 +28,24 @@ class Sidebar extends Component
         $RoleCount = Role::count();
         view()->share('RoleCount',$RoleCount);
         
-        $PermissionCount = Permission::count();
-        view()->share('PermissionCount',$PermissionCount);
+        $TheatreCount = Theatre::count();
+        view()->share('TheatreCount',$TheatreCount);
         
-        $CategoryCount = Category::count();
-        view()->share('CategoryCount',$CategoryCount);
+        $ShowCount = Show::where('is_disabled',Show::STATUS_ACTIVE)->count();
+        view()->share('ShowCount',$ShowCount);
         
-        $SubCategoryCount = SubCategory::count();
-        view()->share('SubCategoryCount',$SubCategoryCount);
+        $reservationCount = SubCategory::count();
+        view()->share('reservationCount',$reservationCount);
         
         $CollectionCount = Collection::count();
         view()->share('CollectionCount',$CollectionCount);
         
         $ProductCount = Product::count();
         view()->share('ProductCount',$ProductCount);
+        
+        $EventCount = Showtime::count();
+        view()->share('EventCount',$EventCount);
+
     }
 
     /**

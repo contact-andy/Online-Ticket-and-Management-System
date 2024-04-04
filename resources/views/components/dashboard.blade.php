@@ -16,30 +16,30 @@
         <div class="col-lg-3 col-6">
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>{{ $category }}</h3>
-                    <p>Total Categories</p>
+                    <h3>{{ $show }}</h3>
+                    <p>Total Shows</p>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-list-alt"></i>
+                    <i class="fas fa-microphone"></i>
                 </div>
-                <a href="{{ route('admin.category.index') }}" class="small-box-footer">View <i
+                <a href="{{ route('admin.show.index') }}" class="small-box-footer">View <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-lg-3 col-6">
             <div class="small-box bg-primary">
                 <div class="inner">
-                    <h3>{{ $product }}</h3>
-                    <p>Total Products</p>
+                    <h3>{{ $theatre }}</h3>
+                    <p>Total Theatres</p>
                 </div>
                 <div class="icon">
-                    <i class="fas fas fa-th"></i>
+                    <i class="fas fas fa-theater-masks"></i>
                 </div>
-                <a href="{{ route('admin.product.index') }}" class="small-box-footer">View <i
+                <a href="{{ route('admin.theatre.index') }}" class="small-box-footer">View <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
-        <div class="col-lg-3 col-6">
+        <!-- <div class="col-lg-3 col-6">
             <div class="small-box bg-secondary">
                 <div class="inner">
                     <h3>{{ $collection }}</h3>
@@ -48,9 +48,9 @@
                 <div class="icon">
                     <i class="fas fas fa-file-pdf"></i>
                 </div>
-                <a href="{{ route('admin.collection.index') }}" class="small-box-footer">View <i
+                <a href="" class="small-box-footer">View <i
                         class="fas fa-arrow-circle-right"></i></a>
-            </div>
+            </div> -->
         </div>
     @endrole
 </div>
